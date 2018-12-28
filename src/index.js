@@ -1,10 +1,11 @@
 import React from 'react';
-import { View, Text } from 'react-native';
 import { Provider } from 'react-redux';
-import store from 'store';
+import Routes from './routes';
 
-import 'config/ReactotronConfig';
-import Routes from 'routes';
+import './config/ReactotronConfig';
+
+import store from './store';
+
 
 const App = () => (
   <Provider store={store}>
