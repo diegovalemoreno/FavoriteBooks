@@ -7,10 +7,14 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from 'react-native';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as FavoritesActions from '../../store/actions/favorites';
 import PropTypes from 'prop-types';
 import styles from './styles';
 
-export default class Main extends Component {
+
+class Main extends Component {
   static navigationOptions = {
     header: null,
   };
@@ -23,6 +27,7 @@ export default class Main extends Component {
     navigation: PropTypes.shape({
       navigate: PropTypes.func,
     }).isRequired,
+    addFavoriteRequest: PropTypes.func.isRequired,
   }
 
   addBook = () => {
@@ -35,6 +40,7 @@ export default class Main extends Component {
   }
 
   render() {
+    console.tron.log(this.props)
     return (
       <SafeAreaView style={styles.container}>
         <StatusBar barStyle="light-content" />
@@ -73,3 +79,14 @@ export default class Main extends Component {
     );
   }
 }
+
+
+const mapStateToProps = ({ favorites }) => ({
+  favorites,
+});
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(FavoritesActions, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
+
