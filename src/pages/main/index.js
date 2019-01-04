@@ -15,12 +15,21 @@ export default class Main extends Component {
     header: null,
   };
 
+  state = {
+    bookNameInput: '',
+  };
+
   static propTypes = {
     navigation: PropTypes.shape({
       navigate: PropTypes.func,
     }).isRequired,
   }
 
+  addBook = () => {
+    if (!this.state.bookNameInput.length) return;
+
+    this.props.addFavoriteRequest(this.state.bookNameInput);
+  }
   navigateToFavorites = () => {
     this.props.navigation.navigate('Favorites');
   }
@@ -41,10 +50,12 @@ export default class Main extends Component {
               autoCorrect={false}
               placeholder="título do livro/ISBN"
               underlineColorAndroid="transparent"
+              value={this.state.bookNameInput}
+              onChangeText={bookNameInput => this.setState({ bookNameInput })}
             />
             <TouchableOpacity
               style={styles.button}
-              onPress={() => {}}
+              onPress={this.addBook}
               activeOpacity={0.6}
             >
               <Text style={styles.buttonText}>Adicionar aos favoritos</Text>

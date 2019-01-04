@@ -1,10 +1,10 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import Routes from './routes';
+import Routes from 'routes';
 
-import './config/ReactotronConfig';
+import 'config/ReactotronConfig';
 
-import store from './store';
+import store from 'store';
 
 
 const App = () => (
