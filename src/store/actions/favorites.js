@@ -4,3 +4,10 @@ export const addFavoriteRequest = bookName => ({
     bookName,
   },
 });
+
+export const addFavoriteSuccess = bookName => ({
+  type: 'ADD_FAIVORITE_SUCCESS',
+  payload: {
+    bookName,
+  },
+});
