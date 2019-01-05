@@ -16,8 +16,7 @@ export function* addFavoriteRequest(action) {
     } else {
       yield put(FavoriteActions.addFavoriteSuccess(response.data[0]));
     }
-
   } catch (err) {
-    yield put(addFavoriteError('O Livro informado nao existe.'));
+    yield put(FavoriteActions.addFavoriteError('O Livro informado nao existe.'));
   }
 }

@@ -64,7 +64,7 @@ class Main extends Component {
               style={styles.input}
               autoCapitalize="none"
               autoCorrect={false}
-              placeholder="título do livro/ISBN"
+              placeholder="ISBN"
               underlineColorAndroid="transparent"
               value={this.state.bookNameInput}
               onChangeText={bookNameInput => this.setState({ bookNameInput })}
