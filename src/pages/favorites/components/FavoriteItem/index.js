@@ -16,9 +16,9 @@ const FavoriteItem = ({ favorite }) => (
 
 FavoriteItem.propTypes = {
   favorite: PropTypes.shape({
-      book_cover_url: PropTypes.string,
-      title: PropTypes.string,
-      description: PropTypes.string,
+    book_cover_url: PropTypes.string,
+    title: PropTypes.string,
+    description: PropTypes.string,
   }).isRequired,
 };
 

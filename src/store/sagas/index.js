@@ -5,6 +5,6 @@ import { addFavoriteRequest } from './favorites';
 
 export default function* rootSaga() {
   return yield all([
-    takeLatest('ADD_FAIVORITE_REQUEST', addFavoriteRequest),
+    takeLatest('ADD_FAVORITE_REQUEST', addFavoriteRequest),
   ]);
 }
