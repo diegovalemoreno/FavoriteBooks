@@ -13,8 +13,11 @@ export default function favorites(state = INITIAL_STATE, action) {
         loading: true,
       };
     case 'ADD_FAVORITE_SUCCESS':
+
       return {
-        data: [...state, action.payload.bookName ],
+        data: [
+          ...state.data,
+          action.payload.bookName],
         errorOnAdd: null,
         loading: false,
       };

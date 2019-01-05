@@ -6,10 +6,17 @@ import { addFavoriteSuccess, addFavoriteError } from '../actions/favorites';
 export function* addFavoriteRequest(action) {
   try {
     const response = yield call(api.get, `/books/${action.payload.bookName}`);
-    if (response.data[0] === undefined || response.data === null) {
-      throw new Error('O Livro informado nao existe.');
+
+    const favorites = yield select(state => state.favorites.data);
+    console.tron.log(favorites);
+    if (favorites.find(favorite => favorite.id === response.data[0].id)) {
+      yield put(addFavoriteError('Livro ja adicionado aos favoritos.'));
+    } else if (response.data[0] === undefined || response.data === null) {
+      yield put(addFavoriteError('O Livro informado nao existe.'));
+    } else {
+      yield put(addFavoriteSuccess(response.data[0]));
     }
-    yield put(addFavoriteSuccess(response.data[0]));
+
   } catch (err) {
     yield put(addFavoriteError('O Livro informado nao existe.'));
   }
